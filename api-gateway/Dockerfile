@@ -1,5 +1,6 @@
 #node js 18 with apline linux
-FROM node:18-apline
+FROM node:18-alpine
+
 
 WORKDIR /use/src/app
 

@@ -7,55 +7,52 @@ services:
     depends_on:
       - redis
       - rabbitmq
-    enviroment:
-      - REDIS_URL = redis://localhost:6379
-      - RABBITMQ_URL = "amqp://localhost:5672"
+    environment:
+      - REDIS_URL=redis://localhost:6379
+      - RABBITMQ_URL=amqp://localhost:5672
 
   identity-service:
     build: ./identity-service
-
     env_file: ./identity-service/.env
     depends_on:
       - redis
       - rabbitmq
-    enviroment:
-      - REDIS_URL = redis://localhost:6379
-      - RABBITMQ_URL = "amqp://localhost:5672"
+    environment:
+      - REDIS_URL=redis://localhost:6379
+      - RABBITMQ_URL=amqp://localhost:5672
+
   post-service:
     build: ./post-service
-
     env_file: ./post-service/.env
     depends_on:
       - redis
       - rabbitmq
-    enviroment:
-      - REDIS_URL = redis://localhost:6379
-      - RABBITMQ_URL = "amqp://localhost:5672"
+    environment:
+      - REDIS_URL=redis://localhost:6379
+      - RABBITMQ_URL=amqp://localhost:5672
 
   media-service:
     build: ./media-service
-
     env_file: ./media-service/.env
     depends_on:
       - redis
       - rabbitmq
-    enviroment:
-      - REDIS_URL = redis://localhost:6379
-      - RABBITMQ_URL = "amqp://localhost:5672"
+    environment:
+      - REDIS_URL=redis://localhost:6379
+      - RABBITMQ_URL=amqp://localhost:5672
 
   search-service:
     build: ./search-service
-
     env_file: ./search-service/.env
     depends_on:
       - redis
       - rabbitmq
-    enviroment:
-      - REDIS_URL = redis://localhost:6379
-      - RABBITMQ_URL = "amqp://localhost:5672"
+    environment:
+      - REDIS_URL=redis://localhost:6379
+      - RABBITMQ_URL=amqp://localhost:5672
 
   redis:
-    image: redis:apline
+    image: redis:alpine
     ports:
       - "6379:6379"
 
@@ -64,7 +61,6 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
       interval: 1m30s
